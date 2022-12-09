@@ -92,6 +92,7 @@ func (cc *OpenCC) Convert(in string) (string, error) {
 			if r[i] < 256 {
 				token = string(r[i])
 				i++
+				
 				tokens = append(tokens, token)
 				continue
 			}

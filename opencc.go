@@ -89,6 +89,12 @@ func (cc *OpenCC) Convert(in string) (string, error) {
 			}
 			s := r[i:offset]
 			max := 0
+			if r[i] < 256 {
+				token = string(r[i])
+				i++
+				tokens = append(tokens, token)
+				continue
+			}
 			for _, dict := range group.Dicts {
 				ret, err := dict.PrefixMatch(string(s))
 				if err != nil {
